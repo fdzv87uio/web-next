@@ -12,6 +12,7 @@ import { drawKeypoints } from '../utils/tensorflow-utils'
 import { Button } from '@material-ui/core'
 import { Canvas } from '../components/Canvas/Canvas.component'
 import { OrientationAxis } from '../components/OrientationAxis/OrientationAxis.component'
+import useDimensions from "../hooks/use-dimensions"
 
 export class DeviceOrientationInfo {
   absolute = false
@@ -33,6 +34,11 @@ const PoseEstimation = (): JSX.Element => {
   // refs for both the webcam and canvas components
   const camRef = useRef(null)
   const canvasRef = useRef(null)
+
+  const [ ref , { width , height }] = useDimensions();
+
+
+  //
 
   // Ios permission  hooks
   const [permissionGranted, setPermissionGranted] = useState<boolean>(false)
@@ -93,8 +99,10 @@ const PoseEstimation = (): JSX.Element => {
     ) {
       // Get Video Properties
       const video = camRef.current.video
-      const videoWidth = 320
-      const videoHeight = 800
+      const videoWidth = width
+      const videoHeight = height
+      console.log(videoWidth)
+      console.log(videoHeight)
 
       // Make detections
       const pose = await net.estimateSinglePose(video)
@@ -114,7 +122,7 @@ const PoseEstimation = (): JSX.Element => {
 
   return (
     <SiteWrapper>
-      <S.PageWrapper>
+      <S.PageWrapper ref={ref}>
         {typeof window !== 'undefined' &&
         typeof window.navigator !== 'undefined' ? (
           <Webcam
@@ -122,8 +130,8 @@ const PoseEstimation = (): JSX.Element => {
             ref={camRef}
             mirrored
             screenshotFormat="image/jpeg"
-            width={320}
-            height={800}
+            width={width}
+            height={height}
           />
         ) : null}
         {typeof window !== 'undefined' &&
@@ -137,13 +145,13 @@ const PoseEstimation = (): JSX.Element => {
               left: 0,
               right: 0,
               zIndex: 9,
-              width: 320,
-              height: 800,
+              width: width,
+              height: height,
             }}
           />
         ) : null}
         {permissionGranted === true ? (
-          <Canvas width={320} height={800} dpr={1} isAnimating={true}>
+          <Canvas width={width} height={height} dpr={1} isAnimating={true}>
             <OrientationAxis
               beta={deviceOrientation?.beta}
               gamma={deviceOrientation?.gamma}
