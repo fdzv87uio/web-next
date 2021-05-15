@@ -2,7 +2,7 @@ import Styled from "styled-components"
 
 export const PageWrapper = Styled.div`
 
-    display: contents;
+    display: block;
     margin: 0px;
     padding: 0px;
     background-color: #FFD733;
