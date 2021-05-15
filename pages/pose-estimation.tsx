@@ -126,8 +126,8 @@ const PoseEstimation = (): JSX.Element => {
             ref={camRef}
             mirrored
             screenshotFormat="image/jpeg"
-            width={340}
-            height={700}
+            width={800}
+            height={800}
           />
         ) : null}
         {typeof window !== 'undefined' &&
@@ -141,13 +141,13 @@ const PoseEstimation = (): JSX.Element => {
               left: 0,
               right: 0,
               zIndex: 9,
-              width: 340,
-              height: 700,
+              width: 800,
+              height: 800,
             }}
           />
         ) : null}
         {permissionGranted === true ? (
-          <Canvas width={340} height={700} dpr={1} isAnimating={true}>
+          <Canvas width={800} height={800} dpr={1} isAnimating={true}>
             <OrientationAxis
               beta={deviceOrientation?.beta}
               gamma={deviceOrientation?.gamma}
