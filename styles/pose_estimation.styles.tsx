@@ -2,9 +2,9 @@ import Styled from "styled-components"
 
 export const PageWrapper = Styled.div`
 
-    display: block;
-    margin: 0px;
-    padding: 0px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
     background-color: #FFD733;
     width:50vh;
     height:900px;

@@ -119,7 +119,13 @@ const PoseEstimation = (): JSX.Element => {
   return (
     <SiteWrapper>
       <S.PageWrapper>
-        {typeof window !== 'undefined' &&
+        {permissionGranted === true ? (
+          <Canvas width={800} height={800} dpr={1} isAnimating={true}>
+            <OrientationAxis
+              beta={deviceOrientation?.beta}
+              gamma={deviceOrientation?.gamma}
+            ></OrientationAxis>
+                    {typeof window !== 'undefined' &&
         typeof window.navigator !== 'undefined' ? (
           <Webcam
             audio={false}
@@ -146,12 +152,6 @@ const PoseEstimation = (): JSX.Element => {
             }}
           />
         ) : null}
-        {permissionGranted === true ? (
-          <Canvas width={800} height={800} dpr={1} isAnimating={true}>
-            <OrientationAxis
-              beta={deviceOrientation?.beta}
-              gamma={deviceOrientation?.gamma}
-            ></OrientationAxis>
           </Canvas>
         ) : (
           <Button onClick={grantPermissionForDeviceOrientation}>
