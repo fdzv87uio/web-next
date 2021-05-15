@@ -115,6 +115,8 @@ const PoseEstimation = (): JSX.Element => {
   return (
     <SiteWrapper>
       <S.PageWrapper>
+        <div></div>
+        <S.VideoWrapper>
         {typeof window !== 'undefined' &&
         typeof window.navigator !== 'undefined' ? (
           <Webcam
@@ -131,7 +133,7 @@ const PoseEstimation = (): JSX.Element => {
           <canvas
             ref={canvasRef}
             style={{
-              position: 'absolute',
+              position: 'relative',
               marginLeft: 'auto',
               marginRight: 'auto',
               left: 0,
@@ -154,6 +156,8 @@ const PoseEstimation = (): JSX.Element => {
             Authorize Orientation
           </Button>
         )}
+        </S.VideoWrapper>
+        <div></div>
       </S.PageWrapper>
     </SiteWrapper>
   )
