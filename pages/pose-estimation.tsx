@@ -12,7 +12,7 @@ import { drawKeypoints } from '../utils/tensorflow-utils'
 import { Button } from '@material-ui/core'
 import { Canvas } from '../components/Canvas/Canvas.component'
 import { OrientationAxis } from '../components/OrientationAxis/OrientationAxis.component'
-import useDimensions from "../hooks/use-dimensions"
+
 
 export class DeviceOrientationInfo {
   absolute = false
@@ -34,10 +34,6 @@ const PoseEstimation = (): JSX.Element => {
   // refs for both the webcam and canvas components
   const camRef = useRef(null)
   const canvasRef = useRef(null)
-
-  const [ ref , { width , height }] = useDimensions();
-
-
   //
 
   // Ios permission  hooks
@@ -122,7 +118,7 @@ const PoseEstimation = (): JSX.Element => {
 
   return (
     <SiteWrapper>
-      <S.PageWrapper ref={ref}>
+      <S.PageWrapper>
         {typeof window !== 'undefined' &&
         typeof window.navigator !== 'undefined' ? (
           <Webcam
@@ -130,8 +126,8 @@ const PoseEstimation = (): JSX.Element => {
             ref={camRef}
             mirrored
             screenshotFormat="image/jpeg"
-            width={width}
-            height={height}
+            width={700}
+            height={700}
           />
         ) : null}
         {typeof window !== 'undefined' &&
@@ -145,13 +141,13 @@ const PoseEstimation = (): JSX.Element => {
               left: 0,
               right: 0,
               zIndex: 9,
-              width: width,
-              height: height,
+              width: 700,
+              height: 700,
             }}
           />
         ) : null}
         {permissionGranted === true ? (
-          <Canvas width={width} height={height} dpr={1} isAnimating={true}>
+          <Canvas width={700} height={700} dpr={1} isAnimating={true}>
             <OrientationAxis
               beta={deviceOrientation?.beta}
               gamma={deviceOrientation?.gamma}
