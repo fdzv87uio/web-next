@@ -99,8 +99,8 @@ const PoseEstimation = (): JSX.Element => {
     ) {
       // Get Video Properties
       const video = camRef.current.video
-      const videoWidth = width
-      const videoHeight = height
+      const videoWidth = camRef.current.video.videoWidth
+      const videoHeight = camRef.current.video.videoHeight
       console.log(videoWidth)
       console.log(videoHeight)
 
