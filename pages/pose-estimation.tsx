@@ -131,7 +131,7 @@ const PoseEstimation = (): JSX.Element => {
           <canvas
             ref={canvasRef}
             style={{
-              position: 'relative',
+              position: 'absolute',
               marginLeft: 'auto',
               marginRight: 'auto',
               left: 0,
