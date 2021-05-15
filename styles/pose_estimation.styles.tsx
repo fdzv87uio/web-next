@@ -6,12 +6,9 @@ export const PageWrapper = Styled.div`
     display: grid;
     grid-template-columns: 1fr;
     background-color: #FFD733;
-    width:50vh;
-    height:900px;
+    width:400px;
+    height:800px;
+
     
-    video{
-        width:50vh;
-        height:900px;
-    }
 
 `

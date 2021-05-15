@@ -13,7 +13,6 @@ import { Button } from '@material-ui/core'
 import { Canvas } from '../components/Canvas/Canvas.component'
 import { OrientationAxis } from '../components/OrientationAxis/OrientationAxis.component'
 
-
 export class DeviceOrientationInfo {
   absolute = false
   alpha: number | null = null
@@ -95,10 +94,8 @@ const PoseEstimation = (): JSX.Element => {
     ) {
       // Get Video Properties
       const video = camRef.current.video
-      const videoWidth = camRef.current.video.videoWidth
-      const videoHeight = camRef.current.video.videoHeight
-      console.log(videoWidth)
-      console.log(videoHeight)
+      const videoWidth = 400
+      const videoHeight = 800
 
       // Make detections
       const pose = await net.estimateSinglePose(video)
@@ -119,20 +116,14 @@ const PoseEstimation = (): JSX.Element => {
   return (
     <SiteWrapper>
       <S.PageWrapper>
-        {permissionGranted === true ? (
-          <Canvas width={800} height={800} dpr={1} isAnimating={true}>
-            <OrientationAxis
-              beta={deviceOrientation?.beta}
-              gamma={deviceOrientation?.gamma}
-            ></OrientationAxis>
-                    {typeof window !== 'undefined' &&
+        {typeof window !== 'undefined' &&
         typeof window.navigator !== 'undefined' ? (
           <Webcam
             audio={false}
             ref={camRef}
             mirrored
             screenshotFormat="image/jpeg"
-            width={800}
+            width={400}
             height={800}
           />
         ) : null}
@@ -147,11 +138,17 @@ const PoseEstimation = (): JSX.Element => {
               left: 0,
               right: 0,
               zIndex: 9,
-              width: 800,
+              width: 400,
               height: 800,
             }}
           />
         ) : null}
+        {permissionGranted === true ? (
+          <Canvas width={400} height={800} dpr={1} isAnimating={true}>
+            <OrientationAxis
+              beta={deviceOrientation?.beta}
+              gamma={deviceOrientation?.gamma}
+            ></OrientationAxis>
           </Canvas>
         ) : (
           <Button onClick={grantPermissionForDeviceOrientation}>
