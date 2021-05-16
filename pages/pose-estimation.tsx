@@ -125,6 +125,7 @@ const PoseEstimation = (): JSX.Element => {
             screenshotFormat="image/jpeg"
             width={400}
             height={600}
+            forceScreenshotSourceSize={true}
           />
         ) : null}
         {typeof window !== 'undefined' &&
