@@ -122,7 +122,6 @@ const PoseEstimation = (): JSX.Element => {
           <Webcam
             audio={false}
             ref={camRef}
-            mirrored
             screenshotFormat="image/jpeg"
             width={400}
             height={600}

@@ -6,21 +6,21 @@ export const PageWrapper = Styled.div`
     display: grid;
     grid-template-columns: 1fr;
     background-color: #000;
-    width:400px;
-    height:600px;
+    width:100%;
+    height:100%;
 
     
 `
 export const TopMargin = Styled.div`
 
-    width: 400px;
+    width: 100%;
     height: 40px;
     background-color: #000;
 
 `
 export const BottomMargin = Styled.div`
 
-    width: 400px;
+    width: 100%;
     height: 90px;
     background-color: #000;
 
