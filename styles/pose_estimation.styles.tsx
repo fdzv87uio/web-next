@@ -6,8 +6,8 @@ export const PageWrapper = Styled.div`
     display: grid;
     grid-template-columns: 1fr;
     background-color: #FFD733;
-    width:100%;
-    height:auto;
+    width:400px;
+    height:600px;
 
     
 
