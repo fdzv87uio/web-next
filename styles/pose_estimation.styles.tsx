@@ -7,7 +7,7 @@ export const PageWrapper = Styled.div`
     grid-template-columns: 1fr;
     background-color: #FFD733;
     width:400px;
-    height:1000px;
+    height:900px;
     overflow: hidden;
 
     
