@@ -14,17 +14,17 @@
  * limitations under the License.
  * =============================================================================
  */
-import * as posenet from "@tensorflow-models/posenet"
-import * as tf from "@tensorflow/tfjs-core"
+import * as posenet from '@tensorflow-models/posenet'
+import * as tf from '@tensorflow/tfjs-core'
 
-const color = "aqua"
-const boundingBoxColor = "red"
+const color = 'aqua'
+const boundingBoxColor = 'red'
 const lineWidth = 2
 
-export const tryResNetButtonName = "tryResNetButton"
-export const tryResNetButtonText = "[New] Try ResNet50"
-const tryResNetButtonTextCss = "width:100%;text-decoration:underline;"
-const tryResNetButtonBackgroundCss = "background:#e61d5f;"
+export const tryResNetButtonName = 'tryResNetButton'
+export const tryResNetButtonText = '[New] Try ResNet50'
+const tryResNetButtonTextCss = 'width:100%;text-decoration:underline;'
+const tryResNetButtonBackgroundCss = 'background:#e61d5f;'
 
 function isAndroid() {
   return /Android/i.test(navigator.userAgent)
@@ -38,13 +38,13 @@ export function isMobile() {
   return isAndroid() || isiOS()
 }
 
-function setDatGuiPropertyCss(propertyText, liCssString, spanCssString = "") {
-  var spans = document.getElementsByClassName("property-name")
+function setDatGuiPropertyCss(propertyText, liCssString, spanCssString = '') {
+  var spans = document.getElementsByClassName('property-name')
   for (var i = 0; i < spans.length; i++) {
     var text = spans[i].textContent || spans[i].innerText
     if (text === propertyText) {
       spans[i].parentNode.parentNode.style = liCssString
-      if (spanCssString !== "") {
+      if (spanCssString !== '') {
         spans[i].style = spanCssString
       }
     }
@@ -64,15 +64,15 @@ export function updateTryResNetButtonDatGuiCss() {
  */
 export function toggleLoadingUI(
   showLoadingUI,
-  loadingDivId = "loading",
-  mainDivId = "main"
+  loadingDivId = 'loading',
+  mainDivId = 'main'
 ) {
   if (showLoadingUI) {
-    document.getElementById(loadingDivId).style.display = "block"
-    document.getElementById(mainDivId).style.display = "none"
+    document.getElementById(loadingDivId).style.display = 'block'
+    document.getElementById(mainDivId).style.display = 'none'
   } else {
-    document.getElementById(loadingDivId).style.display = "none"
-    document.getElementById(mainDivId).style.display = "block"
+    document.getElementById(loadingDivId).style.display = 'none'
+    document.getElementById(mainDivId).style.display = 'block'
   }
 }
 
@@ -80,6 +80,16 @@ function toTuple({ y, x }) {
   return [y, x]
 }
 
+// This method draws the outer ring of a pointer
+export function drawRing(ctx, y, x, r, color) {
+  ctx.beginPath()
+  ctx.arc(x, y, r + 5, 0, Math.PI * 2, false) // outer (filled)
+  ctx.arc(x, y, r + 2, 0, Math.PI * 2, true) // outer (unfills it)
+  ctx.fillStyle = color
+  ctx.fill()
+}
+
+//This method draws the body of the pointer
 export function drawPoint(ctx, y, x, r, color) {
   ctx.beginPath()
   ctx.arc(x, y, r, 0, 2 * Math.PI)
@@ -108,7 +118,7 @@ export function drawSkeleton(keypoints, minConfidence, ctx, scale = 1) {
     minConfidence
   )
 
-  adjacentKeyPoints.forEach(keypoints => {
+  adjacentKeyPoints.forEach((keypoints) => {
     drawSegment(
       toTuple(keypoints[0].position),
       toTuple(keypoints[1].position),
@@ -129,16 +139,20 @@ export function drawKeypoints(keypoints, minConfidence, ctx, scale = 1) {
   var kp16 = keypoints[16]
 
   if (kp9.score > minConfidence) {
-    drawPoint(ctx, kp9.position.y, kp9.position.x, 10, "#ffffff")
+    drawPoint(ctx, kp9.position.y, kp9.position.x, 25, '#FFD733')
+    drawRing(ctx, kp9.position.y, kp9.position.x, 25, '#FFD733')
   }
   if (kp10.score > minConfidence) {
-    drawPoint(ctx, kp10.position.y, kp10.position.x, 10, "#ffffff")
+    drawPoint(ctx, kp10.position.y, kp10.position.x, 25, '#FFD733')
+    drawRing(ctx, kp10.position.y, kp10.position.x, 25, '#FFD733')
   }
   if (kp15.score > minConfidence) {
-    drawPoint(ctx, kp15.position.y, kp15.position.x, 10, "#ffffff")
+    drawPoint(ctx, kp15.position.y, kp15.position.x, 25, '#FFD733')
+    drawRing(ctx, kp15.position.y, kp15.position.x, 25, '#FFD733')
   }
   if (kp16.score > minConfidence) {
-    drawPoint(ctx, kp16.position.y, kp16.position.x, 10, "#ffffff")
+    drawPoint(ctx, kp16.position.y, kp16.position.x, 25, '#FFD733')
+    drawRing(ctx, kp16.position.y, kp16.position.x, 25, '#FFD733')
   }
 }
 
@@ -189,7 +203,7 @@ export async function renderToCanvas(a, ctx) {
 export function renderImageToCanvas(image, size, canvas) {
   canvas.width = size[0]
   canvas.height = size[1]
-  const ctx = canvas.getContext("2d")
+  const ctx = canvas.getContext('2d')
 
   ctx.drawImage(image, 0, 0)
 }
@@ -200,9 +214,9 @@ export function renderImageToCanvas(image, size, canvas) {
  * https://medium.com/tensorflow/real-time-human-pose-estimation-in-the-browser-with-tensorflow-js-7dd0bc881cd5
  */
 export function drawHeatMapValues(heatMapValues, outputStride, canvas) {
-  const ctx = canvas.getContext("2d")
+  const ctx = canvas.getContext('2d')
   const radius = 5
-  const scaledValues = heatMapValues.mul(tf.scalar(outputStride, "int32"))
+  const scaledValues = heatMapValues.mul(tf.scalar(outputStride, 'int32'))
 
   drawPoints(ctx, scaledValues, radius, color)
 }

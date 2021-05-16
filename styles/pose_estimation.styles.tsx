@@ -11,10 +11,17 @@ export const PageWrapper = Styled.div`
 
     
 `
-export const VerticalMargins = Styled.div`
+export const TopMargin = Styled.div`
 
     width: 400px;
-    height: 75px;
+    height: 40px;
+    background-color: #000;
+
+`
+export const BottomMargin = Styled.div`
+
+    width: 400px;
+    height: 90px;
     background-color: #000;
 
 `
