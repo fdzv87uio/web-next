@@ -94,8 +94,8 @@ const PoseEstimation = (): JSX.Element => {
     ) {
       // Get Video Properties
       const video = camRef.current.video
-      const videoWidth = 400
-      const videoHeight = 600
+      const videoWidth = camRef.current.videoWidth
+      const videoHeight = camRef.current.videoHeight
 
       // Make detections
       const pose = await net.estimateSinglePose(video)
@@ -123,8 +123,6 @@ const PoseEstimation = (): JSX.Element => {
             ref={camRef}
             mirrored
             screenshotFormat="image/jpeg"
-            width={400}
-            height={600}
             forceScreenshotSourceSize={true}
           />
         ) : null}
@@ -139,13 +137,13 @@ const PoseEstimation = (): JSX.Element => {
               left: 0,
               right: 0,
               zIndex: 9,
-              width: 400,
-              height: 600,
+              width: camRef.current.videoWidth,
+              height: camRef.current.videoHeight,
             }}
           />
         ) : null}
         {permissionGranted === true ? (
-          <Canvas width={400} height={600} dpr={1} isAnimating={true}>
+          <Canvas width={camRef.current.videoWidth} height={camRef.current.videoHeight} dpr={1} isAnimating={true}>
             <OrientationAxis
               beta={deviceOrientation?.beta}
               gamma={deviceOrientation?.gamma}
