@@ -83,7 +83,7 @@ function toTuple({ y, x }) {
 // This method draws the outer ring of a pointer
 export function drawRing(ctx, y, x, r, color) {
   ctx.beginPath()
-  ctx.arc(x, y, r + 5, 0, Math.PI * 2, false) // outer (filled)
+  ctx.arc(x, y, r + 7, 0, Math.PI * 2, false) // outer (filled)
   ctx.arc(x, y, r + 2, 0, Math.PI * 2, true) // outer (unfills it)
   ctx.fillStyle = color
   ctx.fill()
