@@ -2,7 +2,6 @@ import React, { ReactNode } from "react"
 import Head from 'next/head'
 import StoreProvider from "../state/StoreProvider"
 
-
 function SiteWrapper({ children }: { children: ReactNode }): JSX.Element {
   return (
     <>
