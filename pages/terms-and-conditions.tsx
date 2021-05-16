@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import * as S from "../styles/terms_and_conditions.styles"
-import SiteWrapper from "../components/SiteWrapper"
+import SiteWrapper from "../components/SiteWrapper/SiteWrapper"
 import WhiteHeader from "../components/white-header/white-header.component"
 import FormGroup from "@material-ui/core/FormGroup"
 import FormControlLabel from "@material-ui/core/FormControlLabel"

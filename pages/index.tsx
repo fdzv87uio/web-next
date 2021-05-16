@@ -2,7 +2,7 @@ import ArrowForwardIcon from "@material-ui/icons/ArrowForward"
 import React from "react"
 
 import CarouselItem from "../components/CarouselItem/CarouselItem.component"
-import SiteWrapper from "../components/SiteWrapper"
+import SiteWrapper from "../components/SiteWrapper/SiteWrapper"
 import * as S from "../styles/index.styles"
 
 const doodle1 = "/images/doodle1.png"

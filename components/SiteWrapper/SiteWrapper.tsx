@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react"
 import Head from 'next/head'
-import StoreProvider from "../state/StoreProvider"
+import StoreProvider from "../../state/StoreProvider"
+import * as S from "./SiteWrapper.styles"
 
 function SiteWrapper({ children }: { children: ReactNode }): JSX.Element {
   return (
@@ -27,7 +28,11 @@ function SiteWrapper({ children }: { children: ReactNode }): JSX.Element {
         <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
         <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter"></script>
       </Head>
-        <StoreProvider>{children}</StoreProvider>
+        <StoreProvider>
+          <S.CustomBody>
+          {children}
+          </S.CustomBody>
+        </StoreProvider>
     </>
   )
 }

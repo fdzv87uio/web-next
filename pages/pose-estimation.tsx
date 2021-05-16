@@ -7,7 +7,7 @@ import '@tensorflow/tfjs-backend-webgl'
 import Webcam from 'react-webcam'
 //Styled components ref
 import * as S from '../styles/pose_estimation.styles'
-import SiteWrapper from '../components/SiteWrapper'
+import SiteWrapper from '../components/SiteWrapper/SiteWrapper'
 import { drawKeypoints } from '../utils/tensorflow-utils'
 import { Button } from '@material-ui/core'
 import { Canvas } from '../components/Canvas/Canvas.component'

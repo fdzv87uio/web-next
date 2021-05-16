@@ -1,6 +1,6 @@
 import { useObserver } from "mobx-react-lite";
 import React, { useContext } from "react";
-import SiteWrapper from "../components/SiteWrapper";
+import SiteWrapper from "../components/SiteWrapper/SiteWrapper";
 import { StoreContext } from "../state/StoreProvider";
 
 export default function Index(): JSX.Element {
