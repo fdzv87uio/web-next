@@ -8,6 +8,7 @@ import Checkbox from "@material-ui/core/Checkbox"
 import Collapse from "@material-ui/core/Collapse"
 import Alert from "@material-ui/lab/Alert"
 
+
 const TermsAndConditions = (): JSX.Element => {
   const [showAlert, setShowAlert] = useState(false)
   const [alertMessage, setAlertMessage] = useState<string>()

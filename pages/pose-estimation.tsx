@@ -115,6 +115,7 @@ const PoseEstimation = (): JSX.Element => {
 
   return (
     <SiteWrapper>
+      <S.VerticalMargins />
       <S.PageWrapper>
         {typeof window !== 'undefined' &&
         typeof window.navigator !== 'undefined' ? (
@@ -157,6 +158,7 @@ const PoseEstimation = (): JSX.Element => {
           </Button>
         )}
       </S.PageWrapper>
+      <S.VerticalMargins />
     </SiteWrapper>
   )
 }

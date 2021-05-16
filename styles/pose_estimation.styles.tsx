@@ -10,5 +10,11 @@ export const PageWrapper = Styled.div`
     height:600px;
 
     
+`
+export const VerticalMargins = Styled.div`
+
+    width: 100%;
+    height: 60px;
+    background-color: #000;
 
 `
