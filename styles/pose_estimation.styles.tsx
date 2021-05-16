@@ -13,8 +13,8 @@ export const PageWrapper = Styled.div`
 `
 export const VerticalMargins = Styled.div`
 
-    width: 100%;
-    height: 60px;
+    width: 400px;
+    height: 75px;
     background-color: #000;
 
 `
